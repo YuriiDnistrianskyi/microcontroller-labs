@@ -54,13 +54,14 @@
         <h1 class="text">ESP32 Web Site</h1>
         <div class="button-block">
             <button class="button" onclick="sendCommand()">Set Interval</button>
+            <p id="p"></p>
         </div>
     </div>
     <script>
-      const serverURL = "http://192.168.0.110";
+      const serverURL = "http://192.168.90.214";
 
       function sendCommand() {
-        fetch(serverURL + "/click", { method: "GET"});
+        fetch(serverURL + "/click", { method: "GET" });
       }
 
     </script>
