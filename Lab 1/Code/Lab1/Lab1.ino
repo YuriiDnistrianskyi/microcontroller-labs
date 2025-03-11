@@ -3,17 +3,17 @@
 #include <WebServer.h>
 
 #include "pins.H"
-#include "handle.h"
+#include "server.h"
 #include "ledLighting.h"
 
 #define DEBOUNCE_TIME 200
-#define SEVERAL_SPEED 115200
+#define SERIAL_SPEED 115200
 
 bool stateButton = LOW;
 volatile uint32_t prevDebounceTime = 0;
-uint32_t interval;
-uint8_t indexArray = 0;
+volatile uint8_t indexArray = 0;
 uint32_t intervalArray[] = {2000, 1000, 500, 200};
+uint32_t interval = intervalArray[indexArray];
 uint8_t numberOfIntervals = sizeof(intervalArray) / sizeof(intervalArray[0]);
 
 void IRAM_ATTR handleOnClick()
@@ -41,7 +41,7 @@ void pinModeSetup()
 
 void setup()
 {
-  Serial.begin(SEVERAL_SPEED);
+  Serial.begin(SERIAL_SPEED);
   pinModeSetup();
   initWifi();
   attachInterrupt(digitalPinToInterrupt(buttonPin), handleOnClick, FALLING);
