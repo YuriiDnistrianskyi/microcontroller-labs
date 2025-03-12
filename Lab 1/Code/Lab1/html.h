@@ -58,10 +58,8 @@
         </div>
     </div>
     <script>
-      const serverURL = "http://192.168.90.214";
-
       function sendCommand() {
-        fetch(serverURL + "/click", { method: "GET" });
+        fetch("/click", { method: "GET" });
       }
 
     </script>
