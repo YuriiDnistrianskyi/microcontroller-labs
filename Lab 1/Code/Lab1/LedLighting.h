@@ -2,7 +2,6 @@
 #define LEDLIGHTING_H
 
 #include "pins.h"
-
 bool stateLeds[3] = {};
 uint8_t numberOfLeds = sizeof(stateLeds) / sizeof(stateLeds[0]);
 bool flagChangeLeds = false;
