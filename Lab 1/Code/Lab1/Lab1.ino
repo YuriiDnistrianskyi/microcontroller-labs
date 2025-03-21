@@ -6,7 +6,8 @@
 #include "esp32Server.h"
 #include "ledLighting.h"
 
-#define DEBOUNCE_TIME 200
+B   
+#define DEBOUNCE_TIME 200UL
 #define SERIAL_SPEED 115200
 
 bool stateButton = LOW;
@@ -44,7 +45,7 @@ void setup()
   Serial.begin(SERIAL_SPEED);
   pinModeSetup();
   initWifi();
-  attachInterrupt(digitalPinToInterrupt(buttonPin), handleOnClick, FALLING);
+  attachInterrupt(digitalPinToInterrupt(buttonPin), handleOnClick, RISING);
 }
 
 void loop()

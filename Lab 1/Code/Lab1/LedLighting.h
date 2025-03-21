@@ -16,7 +16,7 @@ void ledLighting(uint32_t delayTime)
     prevLedTime = nowTime;
     currentLed = (currentLed + 1) % numberOfLeds;
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < numberOfLeds; i++) {
       if (i == currentLed)
       {
         stateLeds[i] = HIGH;
