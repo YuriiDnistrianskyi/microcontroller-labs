@@ -1,0 +1,1 @@
+Install the code in the "Code" folder on both microcontrollers (ESP32).
