@@ -5,8 +5,7 @@
 #include "pins.H"
 #include "esp32Server.h"
 #include "ledLighting.h"
-
-B   
+   
 #define DEBOUNCE_TIME 200UL
 #define SERIAL_SPEED 115200
 
