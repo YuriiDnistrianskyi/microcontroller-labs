@@ -6,7 +6,6 @@
 #include "config.h"
 #include "color.h"
 
-// void lightingLed(uint8_t valueRed, uint8_t valueGreen, uint8_t valueBlue);
 void lightingLeds(Color colorLeds);
 
 void stopLeds();

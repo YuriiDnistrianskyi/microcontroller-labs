@@ -2,7 +2,6 @@
 #include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 #include <ArduinoJson.h>
-// #include <LittleFS.h>
 #include <EEPROM.h>
 
 #include "../include/initWiFi.h"
@@ -41,8 +40,6 @@ void handleWebSocket(AsyncWebSocket* ws, AsyncWebSocketClient* client, AwsEventT
         {
             if (doc["red"])
             {
-                // Serial.println("Set color");
-
                 colorLeds.red = doc["red"];
                 colorLeds.green = doc["green"];
                 colorLeds.blue = doc["blue"];
@@ -55,7 +52,6 @@ void handleWebSocket(AsyncWebSocket* ws, AsyncWebSocketClient* client, AwsEventT
 
             if (doc["setState"])
             {
-                // Serial.println("Button on sait");
                 setButtonState();
             }
 
@@ -76,14 +72,11 @@ void initWiFi()
     Serial.print("IP address: ");
     Serial.println(WiFi.localIP());
 
-    // LittleFS.begin();
-
     server.addHandler(&ws);
     ws.onEvent(handleWebSocket);
 
     server.on("/", HTTP_GET, [](AsyncWebServerRequest* request)
     {
-        // request->send(LittleFS, "/index.html", "text/html");
         request->send(200, "text/html", html);
     });
 

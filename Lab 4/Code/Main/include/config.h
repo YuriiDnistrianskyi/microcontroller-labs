@@ -15,10 +15,7 @@ inline const uint32_t DEBOUNCE_TIME = 50; // ms
 
 inline const uint8_t EEPROM_SIZE = 16;
 
-// inline const char* ssid = "Test";
-// inline const char* password = "123123123";
-
-inline const char* ssid = "DickTown";
-inline const char* password = "45848728";
+inline const char* ssid = "Test";
+inline const char* password = "123123123";
 
 #endif //CONFIG_H
