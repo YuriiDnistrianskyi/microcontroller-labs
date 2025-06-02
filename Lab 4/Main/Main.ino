@@ -4,17 +4,12 @@
 #include "include/initPins.h"
 #include "include/initWiFi.h"
 #include "include/getData.h"
-#include "include/lightingLED.h"
-#include "include/updateDisplay.h"
+#include "include/funcLeds.h"
+#include "include/funcDisplay.h"
 #include "include/color.h"
 
 bool buttonState = true;
-Color colorLEds;
-
-uint8_t valueRed = 150;
-uint8_t valueGreen = 150;
-uint8_t valueBlue = 150;
-
+Color colorLeds;
 
 bool flagSetLeds = true;
 bool flagStopLeds = false;
@@ -33,8 +28,8 @@ void loop()
     {
         if (flagSetLeds == true)
         {
-            lightingLed(valueRed, valueGreen, valueBlue);
-            updateDisplay(valueRed, valueGreen, valueBlue);
+            lightingLeds(colorLeds);
+            updateDisplayColor(colorLeds);
 
             flagSetLeds = false;
         }
@@ -43,8 +38,9 @@ void loop()
     {
         if (flagStopLeds == true)
         {
-            lightingLed(0, 0, 0);
-            updateDisplay(0, 0, 0);
+            stopLeds();
+            updateDisplayOff();
+
             flagStopLeds = false;
         }
     }

@@ -2,21 +2,26 @@
 #include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 #include <ArduinoJson.h>
+#include <EEPROM.h>
 
 #include "../include/initWiFi.h"
 
 #include "../include/config.h"
+#include "../include/color.h"
 #include "../include/html.h"
 
 AsyncWebServer server(80);
 AsyncWebSocket ws("/ws");
 
+extern Color colorLeds;
+extern bool flagSetLeds;
+
 void notifyClients()
 {
     StaticJsonDocument<200> doc;
-    doc["red"] = valueRed;
-    doc["green"] = valueGreen;
-    doc["blue"] = valueBlue;
+    doc["red"] = colorLeds.red;
+    doc["green"] = colorLeds.green;
+    doc["blue"] = colorLeds.blue;
     doc["button"] = buttonState;
     String json;
     serializeJson(doc, json);
@@ -36,10 +41,15 @@ void handleWebSocket(AsyncWebSocket* ws, AsyncWebSocketClient* client, AwsEventT
             if (doc["red"])
             {
                 // Serial.println("Set color");
-                valueRed = doc["red"];
-                valueGreen = doc["green"];
-                valueBlue = doc["blue"];
+
+                colorLeds.red = doc["red"];
+                colorLeds.green = doc["green"];
+                colorLeds.blue = doc["blue"];
+                
                 flagSetLeds = true;
+
+                EEPROM.put(0, colorLeds);
+                EEPROM.commit();
             }
 
             if (doc["setState"])

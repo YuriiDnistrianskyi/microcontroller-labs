@@ -3,17 +3,16 @@
 #include <LiquidCrystal_I2C.h>
 
 #include "../include/config.h"
+#include "../include/color.h"
 #include "../include/initPins.h"
-#include "../include/updateDisplay.h"
+#include "../include/funcDisplay.h"
 
 extern void notifyClients();
 extern bool buttonState;
 extern bool flagSetLeds;
 extern bool flagStopLeds;
 
-extern uint8_t valueRed;
-extern uint8_t valueGreen;
-extern uint8_t valueBlue;
+extern Color colorLeds;
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
@@ -51,5 +50,4 @@ void initPins()
     Wire.begin(SDApin, SCLpin);
     lcd.init();
     lcd.backlight();
-    updateDisplay(valueRed, valueGreen, valueBlue);
 }

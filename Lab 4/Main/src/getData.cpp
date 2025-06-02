@@ -5,20 +5,19 @@
 #include "../include/color.h"
 #include "../include/config.h"
 
-extern Color colorLEDs;
+extern Color colorLeds;
 
 void getData() {
     EEPROM.begin(EEPROM_SIZE);
-    EEPROM.get(0, colorLEds);
+    EEPROM.get(0, colorLeds);
 
-    if (colorLEDs.initFlag != 1234) {
-        colorLEDs.initFlag = 1234;
-        colorLEDs.red = 150;
-        colorLEDs.green = 150;
-        colorLEDs.blue = 150;
+    if (colorLeds.initFlag != 1234) {
+        colorLeds.initFlag = 1234;
+        colorLeds.red = 150;
+        colorLeds.green = 150;
+        colorLeds.blue = 150;
 
-        EEPROM.put(0, colorLEDs);
+        EEPROM.put(0, colorLeds);
         EEPROM.commit();
     }
-    EEPROM.end();
 }
