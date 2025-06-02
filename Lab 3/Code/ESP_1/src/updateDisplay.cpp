@@ -8,10 +8,6 @@ extern LiquidCrystal_I2C lcd;
 
 void updateDisplay()
 {
-    // uint8_t hours = timer.getHours();
-    // uint8_t minutes = timer.getMinutes();
-    // uint8_t seconds = timer.getSeconds();
-
     String timerTime = timer.getTime();
 
     lcd.clear();

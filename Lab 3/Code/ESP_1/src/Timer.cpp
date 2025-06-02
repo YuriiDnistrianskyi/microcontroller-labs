@@ -57,6 +57,12 @@ void Timer::goTimer() {
             this->hours--;
         } 
     }
+    else if (this->hours > 0)
+    {
+        this->seconds = 59;
+        this->minutes = 59;
+        this->hours--;
+    }
     else 
     {
         this->isFinished = true;

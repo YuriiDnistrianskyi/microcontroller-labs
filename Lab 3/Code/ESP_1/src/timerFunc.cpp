@@ -40,7 +40,7 @@ void goTime()
 void setHours() {
     uint8_t value = analogRead(encoderPin); // 0 : 255
 
-    if (value != lastHourValue) {
+    if ((value - lastMinuteValue > 5) || (value - lastMinuteValue > -5)) {
         lastHourValue = value;
         timer.setHours(value / 2.56); // 0 : 99
         updateDisplay();
@@ -50,7 +50,7 @@ void setHours() {
 void setMinutes() {
     uint8_t value = analogRead(encoderPin); // 0 : 255
 
-    if (value != lastMinuteValue) {
+    if ((value - lastMinuteValue > 10) || (value - lastMinuteValue < -10)) {
         lastMinuteValue = value;
         timer.setMinutes(value / 4.25); // 0 : 59
         updateDisplay();
