@@ -2,6 +2,7 @@
 #include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 #include <ArduinoJson.h>
+// #include <LittleFS.h>
 #include <EEPROM.h>
 
 #include "../include/initWiFi.h"
@@ -75,11 +76,14 @@ void initWiFi()
     Serial.print("IP address: ");
     Serial.println(WiFi.localIP());
 
+    // LittleFS.begin();
+
     server.addHandler(&ws);
     ws.onEvent(handleWebSocket);
 
     server.on("/", HTTP_GET, [](AsyncWebServerRequest* request)
     {
+        // request->send(LittleFS, "/index.html", "text/html");
         request->send(200, "text/html", html);
     });
 
