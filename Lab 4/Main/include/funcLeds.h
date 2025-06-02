@@ -2,7 +2,6 @@
 #define FUNC_LEDS_H
 
 #include <Arduino.h>
-#include <FastLED.h>
 
 #include "config.h"
 #include "color.h"

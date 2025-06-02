@@ -1,4 +1,5 @@
-#include <FastLED.h>
+// #include <FastLED.h>
+#include <Adafruit_NeoPixel.h>
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
@@ -16,8 +17,10 @@ extern Color colorLeds;
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-CRGB leds[numberOfLeds];
+// CRGB leds[numberOfLeds];
 volatile uint32_t lastDebounceTime = 0;
+
+Adafruit_NeoPixel strip(numberOfLeds, ledPin, NEO_GRB + NEO_KHZ800);
 
 void setButtonState()
 {
@@ -40,9 +43,13 @@ void IRAM_ATTR handleButton()
 
 void initPins()
 {
-    FastLED.addLeds<WS2812B, ledPin, GRB>(leds, numberOfLeds);
-    FastLED.clear();
-    FastLED.show();
+    // FastLED.addLeds<WS2812B, ledPin, GRB>(leds, numberOfLeds);
+    // FastLED.clear();
+    // FastLED.show();
+
+    strip.begin();
+    strip.show();
+    strip.setBrightness(50);
 
     pinMode(buttonPin, INPUT);
     attachInterrupt(digitalPinToInterrupt(buttonPin), handleButton, RISING);
