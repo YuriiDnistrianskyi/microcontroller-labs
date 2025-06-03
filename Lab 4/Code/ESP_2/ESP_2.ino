@@ -1,8 +1,8 @@
 #include <Arduino.h>
 
-#include "include/initPins.h"
-#include "include/initWiFi.h"
 #include "include/config.h"
+#include "include/initPins.h"
+#include "include/initESPNOW.h"
 
 bool buttonState = false;
 bool flagLightLed = false;
@@ -11,9 +11,7 @@ bool flagStopLed = false;
 void setup() {
   Serial.begin(115200);
   initPins();
-  initWiFi();
-
-  
+  initESPNOW(); 
 }
 
 void loop() {
