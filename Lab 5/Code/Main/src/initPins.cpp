@@ -16,7 +16,7 @@ extern bool flagNotifyClients;
 
 extern Color colorLeds;
 
-Adafruit_NeoPixel strip(numberOfLeds, ledPin, NEO_GRB + NEO_KHZ800)Adafruit_NeoPixel strip(numberOfLeds, ledPin, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel strip(numberOfLeds, ledPin, NEO_GRB + NEO_KHZ800);
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 volatile uint32_t lastDebounceTime = 0;
