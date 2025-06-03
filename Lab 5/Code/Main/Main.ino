@@ -13,6 +13,7 @@ Color colorLeds;
 
 bool flagSetLeds = true;
 bool flagStopLeds = false;
+bool flagNotifyClients = false;
 
 void setup()
 {
@@ -24,6 +25,12 @@ void setup()
 
 void loop()
 {
+    if (flagNotifyClients == true)
+    {
+        notifyClients();
+        flagNotifyClients = false;
+    }
+    
     if (buttonState == true)
     {
         if (flagSetLeds == true)

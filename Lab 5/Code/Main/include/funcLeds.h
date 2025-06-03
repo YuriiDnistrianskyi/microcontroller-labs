@@ -3,7 +3,6 @@
 
 #include <Arduino.h>
 
-#include "config.h"
 #include "color.h"
 
 void lightingLeds(Color colorLeds);

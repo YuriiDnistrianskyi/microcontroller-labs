@@ -1,8 +1,9 @@
 #include <Adafruit_NeoPixel.h>
 
+#include "../include/funcLeds.h"
+
 #include "../include/config.h"
 #include "../include/color.h"
-#include "../include/funcLeds.h"
 
 extern Adafruit_NeoPixel strip;
 

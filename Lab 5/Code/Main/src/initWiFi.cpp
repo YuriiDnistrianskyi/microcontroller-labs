@@ -10,11 +10,13 @@
 #include "../include/color.h"
 #include "../include/html.h"
 
-AsyncWebServer server(80);
-AsyncWebSocket ws("/ws");
-
 extern Color colorLeds;
 extern bool flagSetLeds;
+extern void setButtonState();
+extern bool buttonState;
+
+AsyncWebServer server(80);
+AsyncWebSocket ws("/ws");
 
 void notifyClients()
 {
