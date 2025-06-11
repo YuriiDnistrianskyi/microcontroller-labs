@@ -1,3 +1,5 @@
+#include <Arduino.h>
+
 #include "../include/initPins.h"
 
 #include "../include/config.h"
@@ -5,7 +7,7 @@
 extern bool buttonState;
 volatile uint32_t lastDebounceTime = 0;
 
-void handleButtonClick() {
+void ICACHE_RAM_ATTR handleButtonClick() {
     uint32_t currentTime = millis();
 
     if ((currentTime - lastDebounceTime) > DEBOUNCE_TIME) {

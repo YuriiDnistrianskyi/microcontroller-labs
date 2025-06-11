@@ -5,8 +5,6 @@
 
 #include "../include/config.h"
 
-const uint8_t** macAddress[] = {0x24, 0xD7, 0xEB, 0xEF, 0x59, 0xE3}; // 24:D7:EB:EF:59:E3
-
 void handleSend(uint8_t *mac_addr, uint8_t sendStatus)
 {
     if (sendStatus == 0)
