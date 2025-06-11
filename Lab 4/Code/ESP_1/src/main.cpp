@@ -1,9 +1,9 @@
 #include <Arduino.h>
 #include <espnow.h>
 
-#include "include/config.h"
-#include "include/initPins.h"
-#include "include/initESPNOW.h"
+#include "../include/config.h"
+#include "../include/initPins.h"
+#include "../include/initESPNOW.h"
 
 bool buttonState = false;
 bool sendButtonState = false;

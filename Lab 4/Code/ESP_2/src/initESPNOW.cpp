@@ -3,6 +3,7 @@
 
 #include "../include/initESPNOW.h"
 
+extern void sendButtonState();
 extern bool buttonState;
 extern bool flagLightLed;
 extern bool flagStopLed;
@@ -11,6 +12,7 @@ void handleReceive(uint8_t *macAddress, uint8_t *data, uint8_t len)
 {
     memcpy(&buttonState, data, sizeof(buttonState));
     buttonState ? flagLightLed = true : flagStopLed = true;
+    sendButtonState();
 }
 
 void initESPNOW() 
