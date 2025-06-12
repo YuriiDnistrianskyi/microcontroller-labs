@@ -19,7 +19,6 @@ void loop() {
     sendButtonState = !sendButtonState;
     uint8_t data = sendButtonState;
     esp_now_send(macAddress, &data, sizeof(sendButtonState));
-    Serial.println("Send");
     buttonState = false;
   }
 }

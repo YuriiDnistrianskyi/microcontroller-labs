@@ -1,5 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
+#include <LittleFS.h>
 
 #include "../include/initWiFi.h"
 
@@ -29,6 +30,22 @@ void handleButtonClick()
     sendButtonState();
 }
 
+void sendDatabase()
+{
+    File db = LittleFS.open("/database.csv", "r");
+    if (!db)
+    {
+        Serial.println("Failed to open database.csv (r) for sending");
+        server.send(500, "textplain", "Failed to open database");
+        return;
+    }
+
+    String dbContent = db.readString();
+    db.close();
+
+    server.send(200, "text/plain", dbContent);
+}
+
 void initWiFi()
 {
     WiFi.begin(ssid, password);
@@ -45,6 +62,7 @@ void initWiFi()
     server.on("/", HTTP_GET, handleRoot);
     server.on("/click", HTTP_POST, handleButtonClick);
     server.on("/get_state", HTTP_GET, sendButtonState);
+    server.on("/database", HTTP_GET, sendDatabase);
 
     server.begin();
 }

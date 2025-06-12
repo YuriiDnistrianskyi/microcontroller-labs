@@ -13,7 +13,7 @@ void handleSend(uint8_t *mac_addr, uint8_t sendStatus)
     }
     else
     {
-        Serial.print("Send don`t success");
+        Serial.println("Send don`t success");
     }
 }
 

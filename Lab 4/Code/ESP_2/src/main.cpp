@@ -5,6 +5,7 @@
 #include "../include/initPins.h"
 #include "../include/initESPNOW.h"
 #include "../include/initWiFi.h"
+#include "../include/LittleFSFunctions.h"
 
 extern ESP8266WebServer server;
 
@@ -14,8 +15,8 @@ bool flagStopLed = false;
 
 void setup() {
   Serial.begin(115200);
-  Serial.println("Go");
   initPins();
+  initLittleFS();
   initESPNOW(); 
   initWiFi();
 }
@@ -28,6 +29,7 @@ void loop() {
     if (flagLightLed == true) 
     {
       digitalWrite(ledPin, HIGH);
+      updateDB();
       flagLightLed = false;
     }
   }
@@ -36,6 +38,7 @@ void loop() {
     if (flagStopLed == true) 
     {
       digitalWrite(ledPin, LOW);
+      updateDB();
       flagStopLed = false;
     }
   }
